@@ -1,9 +1,11 @@
 package com.sena.pokeapi
 
 import android.Manifest
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sena.pokeapi.adapter.ListaPokemonAdapter
@@ -28,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val data : ArrayList<Pokemon> = ArrayList()
+
+        val btnBuscar = findViewById<ImageButton>(R.id.ibBuscar)
+
+        btnBuscar.setOnClickListener{
+            var intent: Intent = Intent(this, BuscarActivity::class.java).apply {}
+            startActivity(intent)
+        }
 
         val layoutManager = GridLayoutManager(this, 3)
         var recyclerView: RecyclerView = findViewById(R.id.recyclerView)
@@ -87,4 +96,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 }
